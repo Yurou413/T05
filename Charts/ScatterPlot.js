@@ -1,8 +1,8 @@
 function drawScatterPlot(data) {
   const host = d3.select("#scatterplot");
   const width = 720;
-  const height = 310;
-  const margin = { top: 16, right: 22, bottom: 48, left: 58 };
+  const height = 340;
+  const margin = { top: 34, right: 22, bottom: 48, left: 58 };
   const points = data.filter((d) => Number.isFinite(d.screensize) && Number.isFinite(d.energy_consumpt));
   const x = d3.scaleLinear()
     .domain([0, d3.max(points, (d) => d.screensize) * 1.04])
@@ -27,10 +27,11 @@ function drawScatterPlot(data) {
     .attr("class", "axis")
     .attr("transform", `translate(0,${height - margin.bottom})`)
     .call(d3.axisBottom(x).ticks(7).tickFormat((d) => `${d}"`));
-  svg.append("g")
+  const yAxis = svg.append("g")
     .attr("class", "axis")
     .attr("transform", `translate(${margin.left},0)`)
     .call(d3.axisLeft(y).ticks(5));
+  yAxis.selectAll(".tick text").attr("dy", "-0.1em");
 
   svg.append("text")
     .attr("class", "axis-label")
@@ -60,7 +61,7 @@ function drawScatterPlot(data) {
     .append("title")
     .text((d) => `${d.brand} · ${d.screen_tech}\n${d.screensize}" · ${d.energy_consumpt} kWh/year`);
 
-  const legend = svg.append("g").attr("transform", `translate(${margin.left + 4},${margin.top + 3})`);
+  const legend = svg.append("g").attr("transform", `translate(${margin.left + 4},14)`);
   ["LCD", "LCD (LED)", "OLED"].forEach((technology, index) => {
     const item = legend.append("g").attr("transform", `translate(${index * 105},0)`);
     item.append("circle").attr("r", 4).attr("fill", colors(technology));
