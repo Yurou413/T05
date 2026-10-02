@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f7fb">
+    <title>Energy &amp; Screens | Data dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+    <script src="Charts/ScatterPlot.js" defer></script>
+    <script src="Charts/BarChart.js" defer></script>
+    <script src="Charts/LineChart.js" defer></script>
+    <script src="Charts/DonutChart.js" defer></script>
+    <script src="LoadData.js" defer></script>
+  </head>
+  <body>
+    <main class="dashboard">
+      <header class="page-header">
+        <div class="brand-mark" aria-hidden="true">E</div>
+        <div class="header-copy">
+          <p class="eyebrow">DATA VISUALISATION <span>•</span> ENERGY &amp; SCREENS</p>
+          <h1>Small screens.<br class="mobile-break"> Big picture.</h1>
+          <p class="intro">Explore how television technology, size and energy use connect — alongside the changing cost of electricity.</p>
+        </div>
+        <div class="header-note"><span class="status-dot"></span> FOUR LENSES, ONE STORY</div>
+      </header>
+
+      <section class="chart-grid" aria-label="Energy and television data charts">
+        <article class="chart-card chart-card--wide">
+          <div class="card-heading">
+            <div><p class="chart-kicker">01 <span>•</span> SIZE &amp; EFFICIENCY</p><h2>Size meets consumption</h2></div>
+            <span class="chart-tag">TV DATA</span>
+          </div>
+          <p class="chart-description">Larger screens generally use more energy. Each point represents a TV listing.</p>
+          <div class="chart-container" id="scatterplot" aria-label="Scatterplot of television screen size and annual energy consumption"></div>
+        </article>
+
+        <article class="chart-card">
+          <div class="card-heading">
+            <div><p class="chart-kicker">02 <span>•</span> TECHNOLOGY</p><h2>Energy by screen type</h2></div>
+            <span class="chart-tag">AVERAGE</span>
+          </div>
+          <p class="chart-description">Mean annual energy consumption across screen technologies.</p>
+          <div class="chart-container" id="barchart" aria-label="Bar chart comparing average television energy use by screen type"></div>
+        </article>
+
+        <article class="chart-card">
+          <div class="card-heading">
+            <div><p class="chart-kicker">03 <span>•</span> ELECTRICITY</p><h2>Price over time</h2></div>
+            <span class="chart-tag">1998—2023</span>
+          </div>
+          <p class="chart-description">Average Australian spot price, in dollars per megawatt hour.</p>
+          <div class="chart-container" id="linechart" aria-label="Line chart of average Australian electricity spot prices by year"></div>
+        </article>
+
+        <article class="chart-card chart-card--wide">
+          <div class="card-heading">
+            <div><p class="chart-kicker">04 <span>•</span> THE MARKET</p><h2>What’s on the shelf?</h2></div>
+            <span class="chart-tag">TV LISTINGS</span>
+          </div>
+          <p class="chart-description">Share of listed televisions by screen technology, weighted by listing count.</p>
+          <div class="chart-container chart-container--donut" id="donutchart" aria-label="Donut chart showing television listings by screen technology"></div>
+        </article>
+      </section>
+      <p class="page-footer" id="load-status" role="status">Loading chart data…</p>
+    </main>
+  </body>
+</html>

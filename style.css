@@ -1,0 +1,173 @@
+:root {
+  color-scheme: light;
+  --ink: #17253c;
+  --muted: #77859a;
+  --line: #e9edf3;
+  --surface: #ffffff;
+  --canvas: #f4f7fb;
+  --blue: #4778e8;
+  --teal: #24b6a2;
+  --orange: #f29a67;
+  --purple: #8d76df;
+  font-family: "DM Sans", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 88% 0%, rgba(71, 120, 232, .08), transparent 32rem),
+    var(--canvas);
+  color: var(--ink);
+}
+
+.dashboard {
+  width: min(1180px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 48px 0 30px;
+}
+
+.page-header {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 21px;
+  margin-bottom: 36px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  place-items: center;
+  border-radius: 15px;
+  background: var(--ink);
+  color: #fff;
+  font: 800 22px "Manrope", sans-serif;
+  box-shadow: 0 8px 18px rgba(23, 37, 60, .16);
+}
+
+.header-copy { max-width: 680px; }
+.eyebrow, .chart-kicker {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.eyebrow span, .chart-kicker span { padding: 0 5px; color: var(--teal); }
+
+h1, h2 { font-family: "Manrope", sans-serif; }
+h1 {
+  margin: 11px 0 9px;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+}
+.mobile-break { display: none; }
+.intro {
+  max-width: 590px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.header-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 0 auto;
+  padding: 10px 13px;
+  border: 1px solid #e7ebf2;
+  border-radius: 99px;
+  background: rgba(255,255,255,.72);
+  color: #66758b;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.chart-card {
+  min-width: 0;
+  padding: 23px 25px 18px;
+  border: 1px solid rgba(226, 232, 241, .9);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 8px 26px rgba(35, 54, 84, .045);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.chart-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(35, 54, 84, .09);
+}
+.chart-card--wide { grid-column: span 2; }
+.card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.chart-kicker { font-size: 9px; }
+h2 {
+  margin: 6px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -.035em;
+}
+.chart-tag {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: #f3f6fb;
+  color: #79879b;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.chart-description {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.chart-container { width: 100%; min-height: 285px; margin-top: 12px; }
+.chart-container svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart-container--donut { min-height: 235px; }
+.page-footer { margin: 18px 3px 0; color: #9aa5b4; font-size: 10px; }
+
+.axis path, .axis line { stroke: #e6ebf2; }
+.axis text { fill: #8491a3; font: 10px "DM Sans", sans-serif; }
+.axis-label { fill: #66758b; font: 10px "DM Sans", sans-serif; }
+.grid line { stroke: #edf0f5; }
+.grid path { display: none; }
+.chart-tooltip-label { fill: #253550; font: 600 10px "DM Sans", sans-serif; }
+
+@media (max-width: 760px) {
+  .dashboard { width: min(100% - 32px, 580px); padding-top: 32px; }
+  .page-header { gap: 14px; margin-bottom: 25px; }
+  .header-note { display: none; }
+  .chart-grid { grid-template-columns: 1fr; gap: 14px; }
+  .chart-card--wide { grid-column: auto; }
+}
+
+@media (max-width: 420px) {
+  .dashboard { width: calc(100% - 24px); padding-top: 24px; }
+  .brand-mark { width: 38px; height: 38px; flex-basis: 38px; border-radius: 12px; font-size: 18px; }
+  .page-header { gap: 12px; }
+  .mobile-break { display: initial; }
+  .chart-card { padding: 19px 16px 15px; }
+  .chart-container { min-height: 245px; }
+}
